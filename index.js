@@ -1,10 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-port = 3050;
 const index = express();
-
 dotenv.config({path:"./config.env"});
+
+const PORT = process.env.PORT;
+
 const DB = process.env.DATABASE;
 //JSON reading
 index.use(express.json())
@@ -20,6 +21,6 @@ mongoose.connect( DB, { useNewUrlParser: true, })
         console.log(`Error no connection : ${e}`);
     })
 
-index.listen(port, () => {
-    console.log(`server is running at port no ${port}`)
+index.listen(PORT, () => {
+    console.log(`server is running at port no ${PORT}`)
 })
