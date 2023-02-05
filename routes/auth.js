@@ -10,6 +10,7 @@ const companyRegister = require("../controller/companyRegister")
 const companyLogin = require("../controller/companyLogin")
 
 const studentProfile = require("../controller/studentProfile")
+const companyProfile = require("../controller/companyProfile")
 
 require("../index")
 
@@ -21,5 +22,6 @@ router.post("/companyRegister", companyRegister.companyRegister)
 router.post("/companyLogin", companyLogin.companyLogin)
 
 router.get("/studentProfile", studentProfile.studentProfile)
+router.get("/companyProfile", companyProfile.companyProfile)
 
 module.exports = router;
