@@ -14,11 +14,11 @@ const studentLogin = async (req, res)=>{
             const tokenStudentLogin = await studentLogin.generateAuthToken();
             console.log(tokenStudentLogin);
 
-            res.cookie("jwtokenstudent", tokenStudentLogin, {
-                expires: new Date(Date.now() + 2589200000), 
-                httpOnly: true
-            });
-            return res.status(400).send({ message: 'Student Login Sucessfull' });
+            // res.cookie("jwtokenstudent", tokenStudentLogin, {
+            //     expires: new Date(Date.now() + 2589200000), 
+            //     httpOnly: true
+            // });
+            return res.status(400).send({ message: 'Student Login Sucessfull', token: tokenStudentLogin });
         }
         
     } catch(err){

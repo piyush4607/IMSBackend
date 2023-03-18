@@ -12,11 +12,11 @@ const companyLogin = async (req, res) => {
         if (companyLogin) {
             const tokenCompanyLogin = await companyLogin.generateAuthToken();
             console.log(tokenCompanyLogin);
-            res.cookie("jwtokencompany", tokenCompanyLogin, {
-                expires: new Date(Date.now() + 2589200000),
-                httpOnly: true
-            });
-            return res.status(400).send({ message: 'Company Login Sucessfull' });
+            // res.cookie("jwtokencompany", tokenCompanyLogin, {
+            //     expires: new Date(Date.now() + 2589200000),
+            //     httpOnly: true
+            // });
+            return res.status(400).send({ message: 'Company Login Sucessfull', token: tokenCompanyLogin });
         }
     } catch (err) {
         console.log(err);

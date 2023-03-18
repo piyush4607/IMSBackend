@@ -2,7 +2,7 @@ const company = require("../model/companySchema")
 const companyRegister = async (req,res) =>{
     const {companyName, email, phoneNumber, address, companyLogo, password, confirmPassword} = req.body;
     if(!companyName || !email || !phoneNumber || !address || !companyLogo || !password || !confirmPassword){
-        return res.status(400).json({Error: "Please fill the form properly"})
+        return res.status(400).json({Error: "Please fill the form properly"}) 
     }
 
     try{

@@ -47,7 +47,7 @@ companySchema.methods.generateAuthToken = async function(){
         let tokenlogin = jwt.sign({_id:this._id}, process.env.SECRET_KEY);
         this.tokens = this.tokens.concat({token:tokenlogin});
         await this.save();
-        return tokenlogin;
+        return tokenlogin; 
     }catch(err){
         console.log(err)
     }

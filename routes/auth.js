@@ -3,6 +3,18 @@ const { model } = require("mongoose");
 const router = express.Router();
 const jwt = require("jsonwebtoken")
 
+var jwtauth = (req, res, next)=>{
+    var token = req.headers.authorization;
+    token = token.split(' ')[1];
+    jwt.verify(token, process.env.SECRET_KEY, function(err,decode){
+        if(err){
+            res.send({message: "invalid token"})
+        }else{
+            next();
+        }
+    })
+}
+
 const studentRegister = require("../controller/studentRegister")
 const studentLogin = require("../controller/studentLogin")
 
@@ -12,16 +24,20 @@ const companyLogin = require("../controller/companyLogin")
 const studentProfile = require("../controller/studentProfile")
 const companyProfile = require("../controller/companyProfile")
 
+
+const companyIntershipOpen = require("../controller/CompanyIntOpen")
+const studentapply = require("../controller/StudentApply")
 require("../index")
 
 
 router.post("/studentRegister", studentRegister.studentRegister)
 router.post("/studentLogin", studentLogin.studentLogin)
+router.get("/studentProfile", jwtauth,studentProfile.studentProfile)
+router.post("/studentapply", studentapply.StudentApply)
 
 router.post("/companyRegister", companyRegister.companyRegister)
 router.post("/companyLogin", companyLogin.companyLogin)
-
-router.get("/studentProfile", studentProfile.studentProfile)
-router.get("/companyProfile", companyProfile.companyProfile)
+router.get("/companyProfile", jwtauth,companyProfile.companyProfile)
+router.post("/companyInternshipOpen", companyIntershipOpen.internshipRegister)
 
 module.exports = router;
