@@ -2,17 +2,33 @@ const express = require("express");
 const { model } = require("mongoose");
 const router = express.Router();
 const jwt = require("jsonwebtoken")
+const newCompnay = require("../model/companySchema")
 
 var jwtauth = (req, res, next)=>{
-    var token = req.headers.authorization;
-    token = token.split(' ')[1];
-    jwt.verify(token, process.env.SECRET_KEY, function(err,decode){
-        if(err){
-            res.send({message: "invalid token"})
-        }else{
-            next();
-        }
-    })
+     var token = req.headers.authorization;
+     token = token.split(' ')[1];
+     jwt.verify(token, process.env.SECRET_KEY, function(err,decode){
+         if(err){
+             res.send({message: "invalid token"})
+         }else{
+             next();
+         } 
+     })
+
+    // try{
+    //     const token = req.header('Authorization').replace('Bearer ', '')
+    //     const decode = jwt.verify(token, process.env.SECRET_KEY)
+    //     const company = await newCompnay.findById(decode._id) 
+
+    //     if(!company){
+    //         throw new Error()
+    //     }
+
+    //     req.company = company;
+    //     req.token = token;
+    // } catch(error){
+    //     res.status(401).send({error:'please authenicate'})
+    // }
 }
 
 const studentRegister = require("../controller/studentRegister")

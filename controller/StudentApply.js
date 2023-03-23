@@ -3,19 +3,19 @@ const Student = require("../model/studentSchema")
 const StudentApply = async (req, res) => {
 
     try {
-        const { id,StudentName } = req.body;
-        const detail = await ComInternOpen.findOne({ _id:id})
-        console.log(detail.students)
-        const newData=detail.students;
+        const { Jobid,StudentId } = req.body;
+        const internshipDetails = await ComInternOpen.findOne({_id:Jobid})
+        console.log(internshipDetails)
+        const newData=internshipDetails.students;
         for(var i=0;i<newData.length;i++){
-            if(newData[i]===StudentName) 
+            if(newData[i]==={StudentId}) 
             return res.status(404).json("Already Applied");
         }
         // newData.map((dat)=>{
         //     if(dat===StudentName)
         //     return res.status(404).json("Already Present");
         // });
-            const updatedValue = await detail.updateOne({ $push: { students: StudentName } })
+            const updatedValue = await internshipDetails.updateOne({ $push: { students: StudentId } })
             return res.status(201).json({ message: "Applied Sucessfully" });
     } catch (err) {
         console.log(err);
