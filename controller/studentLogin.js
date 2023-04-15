@@ -12,7 +12,7 @@ const studentLogin = async (req, res)=>{
 
         if(studentLogin){
             const tokenStudentLogin = await studentLogin.generateAuthToken();
-            console.log(tokenStudentLogin);
+            // console.log(tokenStudentLogin);
 
             // res.cookie("jwtokenstudent", tokenStudentLogin, {
             //     expires: new Date(Date.now() + 2589200000), 

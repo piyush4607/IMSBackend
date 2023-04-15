@@ -14,21 +14,6 @@ var jwtauth = (req, res, next)=>{
              next();
          } 
      })
-
-    // try{
-    //     const token = req.header('Authorization').replace('Bearer ', '')
-    //     const decode = jwt.verify(token, process.env.SECRET_KEY)
-    //     const company = await newCompnay.findById(decode._id) 
-
-    //     if(!company){
-    //         throw new Error()
-    //     }
-
-    //     req.company = company;
-    //     req.token = token;
-    // } catch(error){
-    //     res.status(401).send({error:'please authenicate'})
-    // }
 }
 
 const studentRegister = require("../controller/studentRegister")

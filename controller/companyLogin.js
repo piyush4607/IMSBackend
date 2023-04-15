@@ -11,7 +11,7 @@ const companyLogin = async (req, res) => {
         }
         if (companyLogin) {
             const tokenCompanyLogin = await companyLogin.generateAuthToken();
-            console.log(tokenCompanyLogin);
+            // console.log(tokenCompanyLogin);
             // res.cookie("jwtokencompany", tokenCompanyLogin, {
             //     expires: new Date(Date.now() + 2589200000),
             //     httpOnly: true
